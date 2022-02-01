@@ -10,7 +10,7 @@ express.json();
 const PORT = 3001;
 
 // Have Node serve the files for our built React app
-/* app.use(express.static(path.resolve(__dirname, '../frontend/build'))); */
+app.use(express.static(path.resolve(__dirname, '../frontend/build')));
 
 app.get('/', (req, res) => res.send('Hello World!'));
 
@@ -34,8 +34,8 @@ app.post('/api/save_todos', express.json(), (req, res) => {
   });
 });
 
-/* app.get('*', (req, res) => {
+app.get('*', (req, res) => {
   res.sendFile(path.resolve(__dirname, '../frontend/build', 'index.html'));
-}); */
+});
 
 app.listen(PORT, () => console.log(`Example app listening on port ${PORT}!`));
