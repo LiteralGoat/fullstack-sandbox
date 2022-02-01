@@ -42,9 +42,7 @@ Going with this option, it was implemented using the `useEffect` hook with `todo
 
 # Sellpy Sandbox
 
-Welcome to the Sellpy Sandbox environment for fullstack development!
-
-Start by forking the repository.
+https://github.com/sellpy/fullstack-sandbox
 
 ## Prerequisites
 
