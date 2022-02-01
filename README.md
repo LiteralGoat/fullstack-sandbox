@@ -3,6 +3,7 @@
 ## Clone the git respository
 
 `git init`
+
 `git clone https://github.com/LiteralGoat/fullstack-sandbox.git`
 
 ## Install dependencies
