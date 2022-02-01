@@ -6,6 +6,8 @@
 
 `git clone https://github.com/LiteralGoat/fullstack-sandbox.git`
 
+`cd fullstack-sandbox`
+
 ## Install dependencies
 
 `npm run dependencies`
