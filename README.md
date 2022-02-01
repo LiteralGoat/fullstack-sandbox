@@ -24,7 +24,7 @@
 
 ## Starting off
 
-First I checked out the code given to me after skimming the tasks. One huge pain point was the saving process since I was so used to saving being automated. Another one was that my task list had no way of showing me whether I had finished a task. Therefore the [auto save](#auto-save) and [checkbox](#checkbox) tasks felt appropriate, aside from the main task.
+First I checked out the code given to me after skimming the tasks. One huge pain point was the saving process since I was so used to saving being automated. Another one was that my task list had no way of showing me whether I had finished a task. Therefore the [auto save](#autosave) and [checkbox](#checkbox) tasks felt appropriate, aside from the main task.
 
 ## Solving the [main](#main) task
 
