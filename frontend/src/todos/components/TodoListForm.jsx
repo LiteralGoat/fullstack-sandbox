@@ -45,9 +45,15 @@ export const TodoListForm = ({ todoList, saveTodoList }) => {
     ]);
   };
 
-  useEffect(() => {
-    saveTodoList(todoList.id, { todos });
-  }, [todos]);
+  const handleChange = (index, todo, keyName, value) => {
+    const newTodos = [
+      ...todos.slice(0, index),
+      { ...todo, [keyName]: value },
+      ...todos.slice(index + 1),
+    ];
+    setTodos(newTodos);
+    saveTodoList(todoList.id, { todos: newTodos });
+  };
 
   return (
     <Card className={classes.card}>
@@ -60,12 +66,7 @@ export const TodoListForm = ({ todoList, saveTodoList }) => {
                 color="primary"
                 checked={todo.checked}
                 onChange={(event) => {
-                  setTodos([
-                    // immutable update
-                    ...todos.slice(0, index),
-                    { ...todo, checked: event.target.checked },
-                    ...todos.slice(index + 1),
-                  ]);
+                  handleChange(index, todo, 'checked', event.target.checked);
                 }}
                 tabIndex={-1}
                 inputProps={{ 'aria-labelledby': index }}
@@ -74,12 +75,7 @@ export const TodoListForm = ({ todoList, saveTodoList }) => {
                 label="What to do?"
                 value={todo.name}
                 onChange={(event) => {
-                  setTodos([
-                    // immutable update
-                    ...todos.slice(0, index),
-                    { ...todo, name: event.target.value },
-                    ...todos.slice(index + 1),
-                  ]);
+                  handleChange(index, todo, 'name', event.target.value);
                 }}
                 className={classes.textField}
               />
