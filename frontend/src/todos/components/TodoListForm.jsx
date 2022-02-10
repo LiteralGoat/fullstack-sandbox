@@ -90,7 +90,9 @@ export const TodoListForm = ({ todoList, saveTodoList }) => {
               type="button"
               color="primary"
               onClick={() => {
-                saveTodoList(todoList.id, { todos: [...todos, ''] });
+                saveTodoList(todoList.id, {
+                  todos: [...todos, { name: '', checked: false }],
+                });
               }}
             >
               Add Todo <AddIcon />
