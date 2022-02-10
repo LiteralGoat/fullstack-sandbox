@@ -37,11 +37,6 @@ export const TodoListForm = ({ todoList, saveTodoList }) => {
   const classes = useStyles();
   const [todos, setTodos] = useState(todoList.todos);
 
-  const handleSubmit = (event) => {
-    if (event) event.preventDefault();
-    saveTodoList(todoList.id, { todos });
-  };
-
   const handleDeleteTodo = (index) => {
     setTodos([
       // immutable delete
@@ -58,7 +53,7 @@ export const TodoListForm = ({ todoList, saveTodoList }) => {
     <Card className={classes.card}>
       <CardContent>
         <Typography component="h2">{todoList.title}</Typography>
-        <form onSubmit={handleSubmit} className={classes.form}>
+        <form className={classes.form}>
           {todos.map((todo, index) => (
             <div key={index} className={classes.todoLine}>
               <Checkbox
