@@ -8,7 +8,6 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ReceiptIcon from '@material-ui/icons/Receipt';
 import Typography from '@material-ui/core/Typography';
 import { TodoListForm } from './TodoListForm';
-import axios from 'axios';
 
 export const TodoLists = ({ style }) => {
   const [todoLists, setTodoLists] = useState({});
@@ -24,7 +23,11 @@ export const TodoLists = ({ style }) => {
     const listToUpdate = todoLists[id];
     const update = { ...todoLists, [id]: { ...listToUpdate, todos } };
     setTodoLists(update);
-    axios.post('/api/save_todos', update);
+    fetch('/api/save_todos', {
+      method: 'post',
+      body: JSON.stringify(update),
+      headers: { 'Content-Type': 'application/json' },
+    });
   };
 
   if (!Object.keys(todoLists).length) return null;
