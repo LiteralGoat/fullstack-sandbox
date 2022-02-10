@@ -35,14 +35,11 @@ const useStyles = makeStyles({
 
 export const TodoListForm = ({ todoList, saveTodoList }) => {
   const classes = useStyles();
-  const [todos, setTodos] = useState(todoList.todos);
+  const todos = todoList.todos;
 
   const handleDeleteTodo = (index) => {
-    setTodos([
-      // immutable delete
-      ...todos.slice(0, index),
-      ...todos.slice(index + 1),
-    ]);
+    const newTodos = [...todos.slice(0, index), ...todos.slice(index + 1)];
+    saveTodoList(todoList.id, { todos: newTodos });
   };
 
   const handleChange = (index, todo, keyName, value) => {
@@ -51,7 +48,6 @@ export const TodoListForm = ({ todoList, saveTodoList }) => {
       { ...todo, [keyName]: value },
       ...todos.slice(index + 1),
     ];
-    setTodos(newTodos);
     saveTodoList(todoList.id, { todos: newTodos });
   };
 
@@ -94,7 +90,7 @@ export const TodoListForm = ({ todoList, saveTodoList }) => {
               type="button"
               color="primary"
               onClick={() => {
-                setTodos([...todos, '']);
+                saveTodoList(todoList.id, { todos: [...todos, ''] });
               }}
             >
               Add Todo <AddIcon />
