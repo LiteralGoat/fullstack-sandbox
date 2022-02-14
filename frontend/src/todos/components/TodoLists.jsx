@@ -8,6 +8,18 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ReceiptIcon from '@material-ui/icons/Receipt';
 import Typography from '@material-ui/core/Typography';
 import { TodoListForm } from './TodoListForm';
+import { debounce } from 'lodash';
+
+const saveTodos = (update) => {
+  console.log('Saved!');
+  fetch('/api/save_todos', {
+    method: 'post',
+    body: JSON.stringify(update),
+    headers: { 'Content-Type': 'application/json' },
+  });
+};
+
+const delayedSave = debounce(saveTodos, 2000);
 
 export const TodoLists = ({ style }) => {
   const [todoLists, setTodoLists] = useState({});
@@ -23,11 +35,7 @@ export const TodoLists = ({ style }) => {
     const listToUpdate = todoLists[id];
     const update = { ...todoLists, [id]: { ...listToUpdate, todos } };
     setTodoLists(update);
-    fetch('/api/save_todos', {
-      method: 'post',
-      body: JSON.stringify(update),
-      headers: { 'Content-Type': 'application/json' },
-    });
+    delayedSave(update);
   };
 
   if (!Object.keys(todoLists).length) return null;
